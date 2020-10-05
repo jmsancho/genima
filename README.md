@@ -1,7 +1,7 @@
 # genima
 Image evolution through genetic algorithms
 
-![Monkey emoji to sunglasses emoji](/examples/monkey2smile_big.gif)
+![Astronaut](/examples/astro.gif)
 
 Not a particularly efficient way of imitating images, but the point is to explore the generative aspect of one image's pixels slowly evolving towards another in a genetic fashion.
 
