@@ -31,7 +31,7 @@ def create_cromo(low=0,high=255,shape=[32,32]):
     
 
 def fitness(og,cromo):
-    return np.sum(np.absolute((og-cromo)))
+    return np.sum(cv2.absdiff(og,cromo))
     
 
 
@@ -254,8 +254,11 @@ def genalg(N,original,low,high,p,p1,p2,seed,K,top,maxgens=100,mutsize=100,
 #                               MAIN
 # =============================================================================
 
-img = cv2.imread('b.jpg')
-src = cv2.imread('a.jpg')
+img = cv2.imread('b.png')
+#img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+src = cv2.imread('a.png')
+#src = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
 
 final = genalg(N=20,
                original = img,
@@ -266,13 +269,13 @@ final = genalg(N=20,
                p2=0.01,
                seed=1313,
                K=5,
-               top=5,
+               top=4,
                maxgens=200000,
-               mutsize=30,
+               mutsize=10,
                source=src)
 
 fbest = select(final,1,img.ravel())
 fbest = np.reshape(fbest[0],img.shape)
 
 cv2.imwrite('best.png',fbest)
-make_gif(1)
+make_gif(22)
